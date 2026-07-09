@@ -34,15 +34,23 @@ jobs:
           import urllib.request
           from datetime import datetime, timezone
 
+          inventory_path = pathlib.Path('public/data/current-inventory.json')
+          processed_path = pathlib.Path('data/orders/processed-order-ids.json')
+          report_path = pathlib.Path('data/orders/latest-sync-report.json')
+          inventory_path.parent.mkdir(parents=True, exist_ok=True)
+          processed_path.parent.mkdir(parents=True, exist_ok=True)
+
           required = ['GOOGLE_CLIENT_ID', 'GOOGLE_CLIENT_SECRET', 'GOOGLE_REFRESH_TOKEN']
           missing = [key for key in required if not os.environ.get(key)]
           if missing:
+              report_path.write_text(json.dumps({
+                  'synced_at': datetime.now(timezone.utc).isoformat(),
+                  'mode': 'skipped_missing_google_oauth_secrets',
+                  'missing': missing,
+                  'applied': []
+              }, indent=2) + '\n', encoding='utf-8')
               print('Google OAuth secrets missing. Skipping live Gmail sync:', ', '.join(missing))
               raise SystemExit(0)
-
-          inventory_path = pathlib.Path('public/data/current-inventory.json')
-          processed_path = pathlib.Path('data/orders/processed-order-ids.json')
-          processed_path.parent.mkdir(parents=True, exist_ok=True)
 
           def read_json(path, default):
               if path.exists():
@@ -157,10 +165,9 @@ jobs:
 
           inventory.setdefault('source', {})['last_synced_from_orders_utc'] = datetime.now(timezone.utc).isoformat()
           inventory.setdefault('source', {})['orders_email_query'] = os.environ.get('ORDER_EMAIL_QUERY')
-          inventory_path.parent.mkdir(parents=True, exist_ok=True)
           inventory_path.write_text(json.dumps(inventory, indent=2) + '\n', encoding='utf-8')
           processed_path.write_text(json.dumps(sorted(processed), indent=2) + '\n', encoding='utf-8')
-          pathlib.Path('data/orders/latest-sync-report.json').write_text(json.dumps({'synced_at': datetime.now(timezone.utc).isoformat(), 'applied': applied}, indent=2) + '\n', encoding='utf-8')
+          report_path.write_text(json.dumps({'synced_at': datetime.now(timezone.utc).isoformat(), 'mode': 'gmail_sync', 'applied': applied}, indent=2) + '\n', encoding='utf-8')
           print(json.dumps({'processed_messages': len(messages), 'applied': applied}, indent=2))
           PY
 
@@ -168,10 +175,10 @@ jobs:
         run: |
           git config user.name "Lion Elite Order Sync"
           git config user.email "actions@github.com"
-          git add public/data/current-inventory.json data/orders/
+          git add public/data/current-inventory.json data/orders/ || true
           if git diff --cached --quiet; then
             echo "No inventory changes to commit."
           else
             git commit -m "Sync Orchids website inventory from order emails"
-            git push
+            git push || echo "Push skipped because remote changed. Next run will retry."
           fi
