@@ -1,0 +1,45 @@
+{
+  "slug": "retatrutide",
+  "brand": "Lion Elite Wellness",
+  "name": "Retatrutide",
+  "eyebrow": "Investigational Metabolic-Signaling Research Compound",
+  "summary": "Retatrutide is an investigational peptide studied for its interaction with three metabolic receptor pathways: GLP-1, GIP, and glucagon receptors.",
+  "research_focus": [
+    "Metabolic signaling",
+    "Energy-balance pathways",
+    "Glucose-related signaling mechanisms",
+    "Interactions between multiple receptor systems"
+  ],
+  "simple_mechanism": "Retatrutide is called a triple-receptor agonist because researchers study how it activates three receptor pathways. Studying several pathways at once may help scientists better understand complex metabolic communication.",
+  "strengths": [
+    "5 mg",
+    "10 mg",
+    "15 mg"
+  ],
+  "inventory_source": "/data/current-inventory.json",
+  "faq": [
+    {
+      "question": "Is Retatrutide FDA-approved?",
+      "answer": "No. Retatrutide remains investigational and is not approved for human use."
+    },
+    {
+      "question": "What does triple-receptor agonist mean?",
+      "answer": "It means researchers are studying activity across three receptor pathways: GLP-1, GIP, and glucagon."
+    },
+    {
+      "question": "Where can I find testing information?",
+      "answer": "The current Certificate of Analysis should be displayed directly on the product page when available."
+    },
+    {
+      "question": "Do you provide personalized transformation support?",
+      "answer": "Lion Elite Beauty offers separate coaching, accountability, nutrition guidance, training support, and personalized transformation planning."
+    }
+  ],
+  "coaching_cross_sell": {
+    "heading": "Looking for personalized transformation support?",
+    "body": "Lion Elite Wellness provides research-focused products and education. Lion Elite Beauty provides coaching, accountability, nutrition guidance, training support, and a personalized transformation strategy.",
+    "button_text": "Explore Lion Elite Beauty Coaching",
+    "url": "https://www.lionelitebeauty.com"
+  },
+  "disclaimer": "For laboratory research purposes only. Not for human consumption. This information is educational and is not medical advice. Products are not intended to diagnose, treat, cure, or prevent any disease."
+}
