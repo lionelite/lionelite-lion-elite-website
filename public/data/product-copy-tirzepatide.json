@@ -1,0 +1,22 @@
+{
+  "slug": "tirzepatide",
+  "brand": "Lion Elite Wellness",
+  "name": "Tirzepatide",
+  "eyebrow": "Dual GIP / GLP-1 Receptor Research Compound",
+  "summary": "Tirzepatide is a peptide-based compound studied for its activity at GIP and GLP-1 receptor pathways involved in metabolic signaling research.",
+  "strengths": [
+    {
+      "label": "10 mg",
+      "price": 139.99,
+      "currency": "USD"
+    }
+  ],
+  "research_focus": [
+    "GIP receptor signaling",
+    "GLP-1 receptor signaling",
+    "Metabolic signaling pathways",
+    "Energy-balance research"
+  ],
+  "simple_mechanism": "Tirzepatide is studied as a dual-receptor agonist because researchers examine its activity across both GIP and GLP-1 receptor pathways.",
+  "disclaimer": "For laboratory research purposes only. Not for human consumption. This information is educational and is not medical advice. Products are not intended to diagnose, treat, cure, or prevent any disease."
+}
