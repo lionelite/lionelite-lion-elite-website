@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./luxury-hero.css";
 
 export const metadata: Metadata = {
   title: "Lion Elite Wellness | Premium Research Peptides",
