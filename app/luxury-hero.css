@@ -1,0 +1,43 @@
+/* Luxury homepage hero override: no floating vial/product imagery. */
+.hero img,
+.hero picture,
+.hero [class*="vial"],
+.hero [class*="bottle"],
+.hero [class*="product-float"],
+.hero [class*="floating"] {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.hero {
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 72% 30%, rgba(199,162,91,.13), transparent 30%),
+    radial-gradient(circle at 15% 82%, rgba(199,162,91,.05), transparent 32%),
+    linear-gradient(135deg,#050505 0%,#0c0b09 54%,#070707 100%) !important;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: linear-gradient(115deg, transparent 0 58%, rgba(199,162,91,.035) 70%, transparent 82%);
+}
+
+.hero-copy,
+.hero-stats,
+.scroll-hint {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  text-shadow: 0 10px 45px rgba(0,0,0,.45);
+}
+
+.hero-glow {
+  opacity: .72;
+  filter: blur(.2px);
+}
