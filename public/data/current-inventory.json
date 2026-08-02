@@ -31,6 +31,7 @@
     { "name": "BPC 157 / TB 500", "batch": "Black / Platinum cap", "dosage": "10 Mg", "units": 23, "status": "in_stock" },
     { "name": "KLOW Blend", "batch": "Yellow / Green cap", "dosage": "80 Mg", "units": 2, "status": "low_stock" },
     { "name": "DSIP", "batch": "Purple / Platinum cap", "dosage": "5 Mg", "units": 3, "status": "low_stock" },
-    { "name": "AOD9604", "batch": "", "dosage": "", "units": 0, "status": "out_of_stock", "sales_note": "Waitlist only. Do not advertise as available." }
+    { "name": "AOD9604", "batch": "", "dosage": "", "units": 0, "status": "out_of_stock", "sales_note": "Waitlist only. Do not advertise as available." },
+    { "name": "ARA-290", "batch": "", "dosage": "10 Mg", "units": 0, "status": "out_of_stock", "price_usd": 149.99, "sales_note": "Listed at $149.99. Unit count not yet confirmed by owner — set units in the Inventory sheet to make purchasable." }
   ]
 }

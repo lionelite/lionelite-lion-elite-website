@@ -1,0 +1,51 @@
+{
+  "slug": "ara-290",
+  "brand": "Lion Elite Wellness",
+  "name": "ARA-290",
+  "eyebrow": "Innate Repair Receptor Research Peptide",
+  "summary": "ARA-290 is an 11-amino-acid peptide derived from the erythropoietin (EPO) molecule. It is studied for its interaction with the innate repair receptor (IRR) and, unlike EPO itself, is examined in research settings as a non-erythropoietic compound.",
+  "strengths": [
+    {
+      "label": "10 mg",
+      "price": 149.99,
+      "currency": "USD"
+    }
+  ],
+  "research_focus": [
+    "Innate repair receptor (IRR) signaling",
+    "Tissue-protection pathway research",
+    "Inflammatory-pathway signaling research",
+    "Neuropeptide and small-peptide structure-activity research"
+  ],
+  "simple_mechanism": "ARA-290 is described as non-erythropoietic because researchers study its activity at the innate repair receptor rather than the receptor pathway associated with red-blood-cell production. Studying a peptide fragment separately from the parent molecule helps scientists examine one signaling pathway at a time.",
+  "inventory_source": "/data/current-inventory.json",
+  "faq": [
+    {
+      "question": "Is ARA-290 FDA-approved?",
+      "answer": "No. ARA-290 is an investigational peptide and is not approved for human use."
+    },
+    {
+      "question": "What does non-erythropoietic mean?",
+      "answer": "It means researchers study this peptide for signaling activity that is examined separately from the red-blood-cell-production pathway associated with erythropoietin."
+    },
+    {
+      "question": "What is the innate repair receptor?",
+      "answer": "It is a receptor complex studied in laboratory research on tissue-protection and inflammatory signaling pathways."
+    },
+    {
+      "question": "Where can I find testing information?",
+      "answer": "The current Certificate of Analysis should be displayed directly on the product page when available."
+    },
+    {
+      "question": "Do you provide personalized transformation support?",
+      "answer": "Lion Elite Beauty offers separate coaching, accountability, nutrition guidance, training support, and personalized transformation planning."
+    }
+  ],
+  "coaching_cross_sell": {
+    "heading": "Looking for personalized transformation support?",
+    "body": "Lion Elite Wellness provides research-focused products and education. Lion Elite Beauty provides coaching, accountability, nutrition guidance, training support, and a personalized transformation strategy.",
+    "button_text": "Explore Lion Elite Beauty Coaching",
+    "url": "https://www.lionelitebeauty.com"
+  },
+  "disclaimer": "For laboratory research purposes only. Not for human consumption. This information is educational and is not medical advice. Products are not intended to diagnose, treat, cure, or prevent any disease."
+}
