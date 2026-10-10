@@ -1,4 +1,4 @@
-import { createHash, createHmac, timingSafeEqual } from "crypto";
+import { createHmac, scryptSync, timingSafeEqual } from "crypto";
 
 export type RepUser = {
   id: string;
@@ -20,7 +20,7 @@ const BUILT_IN_REPS: BuiltInRepUser[] = [
     name: "Jaqualeen Brooks",
     email: "quabrooks24@icloud.com",
     referralCode: "Rilla99",
-    passwordHash: "baaca9a4df612ba23f477a2f5065b3746973c1033344b1efdd1817288416b812",
+    passwordSalt: "34953060e2340392ff5053a7a76f94a3",\n    passwordHash: "e174792b55fc7135afedd59eb9f908abf3658325a6cb95a3353330e80e3872eb33f4083980257ee55da6395d6878f6963d85b791c8716a8866f16e5cd4cdba9d",
   },
 ];
 
@@ -55,9 +55,9 @@ export function authenticateRep(email: string, password: string): RepSession | n
   }
 
   const builtInUser = BUILT_IN_REPS.find((item) => item.email.toLowerCase() === email.toLowerCase());
-  if (!builtInUser || !verifyBuiltInPassword(password, builtInUser.passwordHash)) return null;
+  if (!builtInUser || !verifyBuiltInPassword(password, builtInUser.passwordSalt, builtInUser.passwordHash)) return null;
 
-  const { passwordHash: _passwordHash, ...safeUser } = builtInUser;
+  const { passwordSalt: _passwordSalt, passwordHash: _passwordHash, ...safeUser } = builtInUser;
   return { ...safeUser, exp: Date.now() + 1000 * 60 * 60 * 24 * 7 };
 }
 
