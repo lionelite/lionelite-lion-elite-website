@@ -1,4 +1,4 @@
-import { createHmac, timingSafeEqual } from "crypto";
+import { createHash, createHmac, timingSafeEqual } from "crypto";
 
 export type RepUser = {
   id: string;
@@ -8,7 +8,21 @@ export type RepUser = {
   referralCode: string;
 };
 
+type BuiltInRepUser = Omit<RepUser, "password"> & {
+  passwordHash: string;
+};
+
 export type RepSession = Omit<RepUser, "password"> & { exp: number };
+
+const BUILT_IN_REPS: BuiltInRepUser[] = [
+  {
+    id: "rep-rilla",
+    name: "Jaqualeen Brooks",
+    email: "quabrooks24@icloud.com",
+    referralCode: "Rilla99",
+    passwordHash: "baaca9a4df612ba23f477a2f5065b3746973c1033344b1efdd1817288416b812",
+  },
+];
 
 function secret() {
   const value = process.env.REP_PORTAL_SECRET;
@@ -27,10 +41,23 @@ export function getRepUsers(): RepUser[] {
   }
 }
 
+function verifyBuiltInPassword(password: string, expectedHash: string) {
+  const actual = createHash("sha256").update(password).digest();
+  const expected = Buffer.from(expectedHash, "hex");
+  return actual.length === expected.length && timingSafeEqual(actual, expected);
+}
+
 export function authenticateRep(email: string, password: string): RepSession | null {
-  const user = getRepUsers().find((item) => item.email.toLowerCase() === email.toLowerCase());
-  if (!user || user.password !== password) return null;
-  const { password: _password, ...safeUser } = user;
+  const envUser = getRepUsers().find((item) => item.email.toLowerCase() === email.toLowerCase());
+  if (envUser && envUser.password === password) {
+    const { password: _password, ...safeUser } = envUser;
+    return { ...safeUser, exp: Date.now() + 1000 * 60 * 60 * 24 * 7 };
+  }
+
+  const builtInUser = BUILT_IN_REPS.find((item) => item.email.toLowerCase() === email.toLowerCase());
+  if (!builtInUser || !verifyBuiltInPassword(password, builtInUser.passwordHash)) return null;
+
+  const { passwordHash: _passwordHash, ...safeUser } = builtInUser;
   return { ...safeUser, exp: Date.now() + 1000 * 60 * 60 * 24 * 7 };
 }
 
